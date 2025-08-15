@@ -28,10 +28,15 @@ module.exports = {
         200: `rgb(var(--color-secondary-200))`,
         100: `rgb(var(--color-secondary-100))`,
       },
-      orange:{
-        950:'rgb(249, 181, 0)'
+      orange: {
+        950: 'rgb(249, 181, 0)'
       },
-      backgroundapp:`rgb(var(--background-app-rgb))` 
+      backgroundapp: `rgb(var(--background-app-rgb))`,
+      red: {
+        300: `rgb(var(--color-red-300))`,
+        500: `rgb(var(--color-red-500))`,
+      },
+      white: `rgb(var(--color-white))`
     }
   },
   plugins: [],
