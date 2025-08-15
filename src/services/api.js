@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const app = axios.create({
-    baseURL: "https://api.escuelajs.co",
+    baseURL: process.env.REACT_APP_BASE_URL,
     // withCredentials: true
 })
 
