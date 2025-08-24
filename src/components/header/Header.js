@@ -20,7 +20,7 @@ const Header = () => {
         <header className={`bg-secondary-100 py-2.5 w-full fixed top-0 z-50`}>
             <div className='w-[90%] lg:max-w-screen-md 2xl:max-w-screen-xl mx-auto flex justify-between items-center'>
                 <div className='hidden md:flex'>
-                    <NavBar />
+                    <NavBar setShowMenu={() => { }} />
                 </div>
                 <div className='flex md:hidden'>
                     <button className='border border-secondary-200 rounded-lg p-1.5' onClick={() => setShowMenu(true)}>
@@ -41,7 +41,7 @@ const Header = () => {
                 </div>
             </div>
             {showMenu && <Modal onClose={() => setShowMenu(false)} title={'Menu'}>
-                <NavBar />
+                <NavBar setShowMenu={setShowMenu} />
             </Modal>}
         </header>
     );
