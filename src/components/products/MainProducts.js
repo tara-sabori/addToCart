@@ -19,16 +19,24 @@ const MainProducts = () => {
         getProducts();
     }, [dispatch])
 
+    const [categorySelected, setCategorySelected] = useState('');
+    const filterByCategory = categorySelected ? products?.filter(p => p?.category === categorySelected?.category) : products;
+    console.log(products);
+
     const page = searchParams.get('page');
     const [currentPage, setCurrentPage] = useState(page || 1);
     const lastIndex = currentPage * 10;
     const firstIndex = lastIndex - 10;
-    const productsList = products?.slice(firstIndex, lastIndex);
-    const npage = Math.ceil(products?.length / 10);
+    const productsList = filterByCategory?.slice(firstIndex, lastIndex);
+    const npage = Math.ceil(filterByCategory?.length / 10);
 
     return (
         <div className='flex flex-col gap-3'>
-            <CategoryList />
+            <CategoryList
+                categorySelected={categorySelected}
+                setCategorySelected={setCategorySelected}
+                setCurrentPage={setCurrentPage}
+                />
             <div>
                 {
                     loading ? <span>loading...</span> :
