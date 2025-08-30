@@ -12,7 +12,7 @@ export const fetchProducts = createAsyncThunk("Products/fetchProductsStatus", as
     }
 })
 
-export const fetchProductById=createAsyncThunk("Products/fetchProductByIdStatus",async(id,{rejectWithValue})=>{
+export const fetchProductById = createAsyncThunk("Products/fetchProductByIdStatus", async (id, { rejectWithValue }) => {
     try {
         const res = await api.get(`/products/${id}`);
         console.log(res?.data);
@@ -25,7 +25,7 @@ export const fetchProductById=createAsyncThunk("Products/fetchProductByIdStatus"
 const initialState = {
     products: [],
     loading: true,
-    error:null,
+    error: null,
     productItem: null,
     loadingItem: true,
 }
@@ -40,12 +40,12 @@ const productsSlice = createSlice({
         })
         builder.addCase(fetchProducts.fulfilled, (state, action) => {
             state.loading = false;
-            state.products=action.payload;
-            state.error=null;
+            state.products = action.payload;
+            state.error = null;
         })
         builder.addCase(fetchProductById.rejected, (state, action) => {
             state.loading = false;
-            state.error=action.payload
+            state.error = action.payload
         })
         //fetch Products By id
         builder.addCase(fetchProductById.pending, (state, action) => {
@@ -53,12 +53,12 @@ const productsSlice = createSlice({
         })
         builder.addCase(fetchProductById.fulfilled, (state, action) => {
             state.loadingItem = false;
-            state.productItem=action.payload;
-            state.error=null;
+            state.productItem = action.payload;
+            state.error = null;
         })
         builder.addCase(fetchProducts.rejected, (state, action) => {
             state.loadingItem = false;
-            state.error=action.payload
+            state.error = action.payload
         })
     }
 })
