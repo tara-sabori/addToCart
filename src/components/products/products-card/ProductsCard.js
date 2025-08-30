@@ -20,9 +20,6 @@ const ProductsCard = ({ product }) => {
                     }
                     <Link className='font-semibold text-xs' to={`/products/${product?.id}`}>Read More</Link>
                 </p>
-                <div className='rounded-full flex text-center text-sm pb-1 px-3 bg-secondary-400 border border-secondary-300 w-fit'>
-                    {product?.category?.slug}
-                </div>
             </div>
             {/* footer */}
             <div className='flex items-end justify-between'>
@@ -30,7 +27,6 @@ const ProductsCard = ({ product }) => {
                     <span className='text-xs'>price</span>
                     <span className='text-base font-semibold'>$ {product?.price}</span>
                 </div>
-                {/* <Link className='bg-orange-950 p-1 px-2 rounded-lg text-secondary-100' to={`/products/${product?.id}`}>Add To Cart</Link> */}
                 <AddToCartButton product={product} />
             </div>
         </div>
