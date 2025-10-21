@@ -1,10 +1,11 @@
-import React from 'react';
+import MainFeatures from "../../components/home/feature/MainFeatures";
+import Hero from "../../components/home/Hero";
 
 const HomePage = () => {
     return (
         <div>
-            {/* <Header /> */}
-            home
+            <Hero />
+            <MainFeatures />
         </div>
     );
 }

@@ -14,7 +14,7 @@ function App() {
   return (
     <div className={`${myTheme} App bg-backgroundapp`}>
       <Header />
-      <div className="pt-20">
+      <div>
         <Routes>
           <Route path="/products" element={<ProductsPage />}>
             <Route path=":id" element={<ProfileProduct />} />
