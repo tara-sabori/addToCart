@@ -5,6 +5,7 @@ import ProductsCard from './products-card/ProductsCard';
 import { useSearchParams } from 'react-router-dom';
 import Paginate from '../../ui/Paginate';
 import CategoryList from './category-list/CategoryList';
+import Loading from '../../ui/Loading';
 
 const MainProducts = () => {
     const dispatch = useDispatch();
@@ -39,7 +40,7 @@ const MainProducts = () => {
                 />
             <div>
                 {
-                    loading ? <span>loading...</span> :
+                    loading ? <Loading /> :
                         <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-2'>
                             {productsList?.map(product => <ProductsCard key={product?.id} product={product} />)}
                         </div>

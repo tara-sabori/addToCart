@@ -7,7 +7,7 @@ import { useSelector } from 'react-redux';
 const CartDetails = () => {
     const { addedProducts } = useSelector((state) => state.cart);
     return (
-        <div className='p-5 flex flex-col gap-4 md:flex-row md:gap-8 items-start justify-center'>
+        <div className='p-5 pt-20 flex flex-col gap-4 md:flex-row md:gap-8 items-start justify-center'>
             <div className='p-3 pt-0 md:w-[500px] space-y-8'>
                 {addedProducts?.length > 0 && addedProducts?.map(p => <div
                     className='flex items-center gap-3 border-b pb-2.5 border-secondary-300'
