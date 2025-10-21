@@ -1,4 +1,14 @@
 /** @type {import('tailwindcss').Config} */
+
+function withOpacity(variableName) {
+  return ({ opacityValue }) => {
+    if (opacityValue !== undefined) {
+      return `rgba(var(${variableName}), ${opacityValue})`;
+    }
+    return `rgb(var(${variableName}))`;
+  };
+}
+
 module.exports = {
   content: [
     "./src/**/*.{js,jsx,ts,tsx}",
@@ -7,36 +17,36 @@ module.exports = {
     extend: {},
     colors: {
       primary: {
-        900: `rgb(var(--color-primary-900))`,
-        800: `rgb(var(--color-primary-800))`,
-        700: `rgb(var(--color-primary-700))`,
-        600: `rgb(var(--color-primary-600))`,
-        500: `rgb(var(--color-primary-500))`,
-        400: `rgb(var(--color-primary-400))`,
-        300: `rgb(var(--color-primary-300))`,
-        200: `rgb(var(--color-primary-200))`,
-        100: `rgb(var(--color-primary-100))`,
+        900: withOpacity("--color-primary-900"),
+        800: withOpacity("--color-primary-800"),
+        700: withOpacity("--color-primary-700"),
+        600: withOpacity("--color-primary-600"),
+        500: withOpacity("--color-primary-500"),
+        400: withOpacity("--color-primary-400"),
+        300: withOpacity("--color-primary-300"),
+        200: withOpacity("--color-primary-200"),
+        100: withOpacity("--color-primary-100"),
       },
       secondary: {
-        900: `rgb(var(--color-secondary-900))`,
-        800: `rgb(var(--color-secondary-800))`,
-        700: `rgb(var(--color-secondary-700))`,
-        600: `rgb(var(--color-secondary-600))`,
-        500: `rgb(var(--color-secondary-500))`,
-        400: `rgb(var(--color-secondary-400))`,
-        300: `rgb(var(--color-secondary-300))`,
-        200: `rgb(var(--color-secondary-200))`,
-        100: `rgb(var(--color-secondary-100))`,
+        900: withOpacity("--color-secondary-900"),
+        800: withOpacity("--color-secondary-800"),
+        700: withOpacity("--color-secondary-700"),
+        600: withOpacity("--color-secondary-600"),
+        500: withOpacity("--color-secondary-500"),
+        400: withOpacity("--color-secondary-400"),
+        300: withOpacity("--color-secondary-300"),
+        200: withOpacity("--color-secondary-200"),
+        100: withOpacity("--color-secondary-100"),
       },
       orange: {
         950: 'rgb(249, 181, 0)'
       },
-      backgroundapp: `rgb(var(--background-app-rgb))`,
+      backgroundapp: withOpacity("--background-app-rgb"),
       red: {
-        300: `rgb(var(--color-red-300))`,
-        500: `rgb(var(--color-red-500))`,
+        300: withOpacity("--color-red-300"),
+        500: withOpacity("--color-red-500"),
       },
-      white: `rgb(var(--color-white))`
+      white: withOpacity("--color-white")
     }
   },
   plugins: [],
