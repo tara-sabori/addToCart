@@ -55,13 +55,13 @@
     }
 }
 
-.App {
+body{
     /* background: #fff; */
     color: #1c1b1b;
     min-height: 100vh;
 }
 
-.App.dark-mode {
+body.dark-mode {
     /* background: #3b3838; */
     color: #f1f1f1;
 }
