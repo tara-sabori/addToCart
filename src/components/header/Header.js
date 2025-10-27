@@ -17,7 +17,7 @@ const Header = () => {
         dispatch(toggleTheme(myTheme));
     }
     return (
-        <header className={`bg-secondary-100 py-2.5 w-full fixed top-0 z-50`}>
+        <header className={`bg-secondary-100 py-2.5 w-full fixed top-0 z-50 shadow-md`}>
             <div className='w-[90%] lg:max-w-screen-md 2xl:max-w-screen-xl mx-auto flex justify-between items-center'>
                 <div className='hidden md:flex'>
                     <NavBar setShowMenu={() => { }} />

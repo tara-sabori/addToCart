@@ -6,13 +6,17 @@ import HomePage from "./pages/home/HomePage";
 import ProductsPage from "./pages/products/ProductsPage";
 import ProfileProduct from "./pages/products/product-profile/ProfileProduct";
 import Header from "./components/header/Header";
+import { useEffect } from "react";
 
 function App() {
   const { myTheme } = useSelector(
     (state) => state.theme
   );
+  useEffect(()=>{
+    document.body.classList=myTheme;
+  },[myTheme])
   return (
-    <div className={`${myTheme} App bg-backgroundapp`}>
+    <div className={`App bg-backgroundapp`}>
       <Header />
       <div>
         <Routes>
