@@ -2,9 +2,9 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import AddToCartButton from '../../../ui/AddToCartButton';
 
-const ProductsCard = ({ product }) => {
+const ProductsCard = ({ product , className }) => {
     return (
-        <div className='rounded-lg p-2.5 flex flex-col gap-3'>
+        <div className={`rounded-lg p-2.5 flex flex-col gap-3 ${className}`}>
             {/* header */}
             <div className='w-full bg-secondary-200 text-center py-1.5 rounded-md'>
                 <img src={product?.image || '/assets/images/not-found.jpg'} alt={product?.title} className='rounded-lg w-[200px] h-[200px] md:w-[180px] md:h-[180px] mx-auto' />
@@ -18,7 +18,9 @@ const ProductsCard = ({ product }) => {
                             ? product?.description?.slice(0, 15) + '...'
                             : product?.description
                     }
-                    <Link className='font-semibold text-xs' to={`/products/${product?.id}`}>Read More</Link>
+                    <Link className='font-semibold text-xs' to={`/products/${product?.id}`} onClick={()=>window.scrollTo(0,0)}> 
+                        Read More
+                    </Link>
                 </p>
             </div>
             {/* footer */}

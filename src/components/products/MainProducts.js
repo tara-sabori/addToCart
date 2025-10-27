@@ -6,12 +6,14 @@ import { useSearchParams } from 'react-router-dom';
 import Paginate from '../../ui/Paginate';
 import CategoryList from './category-list/CategoryList';
 import Loading from '../../ui/Loading';
+import SearchBox from './SearchBox';
 
 const MainProducts = () => {
     const dispatch = useDispatch();
-    const { products, loading, error } = useSelector((state) => state.products);
+    const { products, loading } = useSelector((state) => state.products);
 
     const [searchParams] = useSearchParams();
+    const category=searchParams.get("category") || "";
 
     useEffect(() => {
         const getProducts = () => {
@@ -20,10 +22,14 @@ const MainProducts = () => {
         getProducts();
     }, [dispatch])
 
-    const [categorySelected, setCategorySelected] = useState('');
-    const filterByCategory = categorySelected ? products?.filter(p => p?.category === categorySelected?.category) : products;
-    console.log(products);
+    const search = searchParams.get('search') || "";
+    console.log(search);
+    const filterBySearch = search ? products?.filter(p => p?.title?.toString()?.toLocaleLowerCase()?.includes(search?.toString()?.toLocaleLowerCase())) : products;
+    console.log(filterBySearch);
+    const filterByCategory = category ? filterBySearch?.filter(p => p?.category.startsWith(category)) : filterBySearch;
+    // console.log(products);
 
+    
     const page = searchParams.get('page');
     const [currentPage, setCurrentPage] = useState(page || 1);
     const lastIndex = currentPage * 10;
@@ -32,18 +38,20 @@ const MainProducts = () => {
     const npage = Math.ceil(filterByCategory?.length / 10);
 
     return (
-        <div className='flex flex-col gap-3'>
-            <CategoryList
-                categorySelected={categorySelected}
-                setCategorySelected={setCategorySelected}
+        <div className='flex flex-col gap-4'>
+            <div className='flex flex-col gap-8 md:flex-row md:justify-between md:items-center md:gap-0'>
+                <SearchBox setCurrentPage={setCurrentPage} />
+                <CategoryList
                 setCurrentPage={setCurrentPage}
                 />
-            <div>
+            </div>
+            <div className='min-h-[70vh]'>
                 {
                     loading ? <Loading /> :
-                        <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-2'>
+                      productsList?.length? <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-2'>
                             {productsList?.map(product => <ProductsCard key={product?.id} product={product} />)}
                         </div>
+                        : <p>not found</p>
                 }
             </div>
             {
