@@ -1,8 +1,9 @@
-import React, { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 
-const CategoryList = ({ categorySelected, setCategorySelected, setCurrentPage }) => {
-    const [serachParams, setSearchParams] = useSearchParams();
+const CategoryList = ({ setCurrentPage }) => {
+    const [searchParams, setSearchParams] = useSearchParams();
+    const categoryTitle=searchParams.get("category")||"";
     const ref = useRef();
     const [showList, setShowList] = useState(false);
 
@@ -35,22 +36,28 @@ const CategoryList = ({ categorySelected, setCategorySelected, setCurrentPage })
         });
     }
     const handleSelect = (category) => {
-        setCategorySelected(category);
         setShowList(false);
-        handleSearch('page', '');
+        searchParams.set("page","1")
+        if(category){
+            searchParams.set('category', category?.title)
+        }
+        else{
+            searchParams.delete("category");
+        }
+        setSearchParams(searchParams);
         setCurrentPage(1);
     }
     return (
         <div
             ref={ref}
-            className='w-[250px] relative rounded-lg border border-secondary-600 ml-3 cursor-pointer'>
+            className='w-[230px] relative rounded-lg border border-secondary-600 ml-3 cursor-pointer'>
             <div className='absolute -top-2 left-6 bg-backgroundapp px-2 text-xs'>
                 categories
             </div>
             <div
                 onClick={() => setShowList(!showList)}
                 className='p-2.5 w-full flex items-center justify-between'>
-                <span>{categorySelected ? categorySelected?.title : "All"}</span>
+                <span>{categoryTitle || "All"}</span>
                 {/* < */}
             </div>
             {
