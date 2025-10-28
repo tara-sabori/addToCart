@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import Loading from "../../ui/Loading";
 import MainProductSlider from "../../components/home/product-slider/MainProductSlider";
 import Footer from "../../components/footer/Footer";
+import Categories from "../../components/home/categories/Categories";
 
 const HomePage = () => {
     const dispatch=useDispatch();
@@ -20,6 +21,7 @@ const HomePage = () => {
             loading ? <Loading />:
         <>
             <Hero />
+            {/* <Categories /> */}
             <MainFeatures />
             <MainProductSlider />
             <Footer />

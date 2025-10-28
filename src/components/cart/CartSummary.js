@@ -10,9 +10,9 @@ const CartSummary = () => {
     const [methodSelected, setMethodSelected] = useState('');
     return (
         <div className='space-y-3 w-full md:w-fit'>
-            <div className='bg-[#D1D5DB] p-3 space-y-4 w-full md:w-[300px] rounded-md text-[#1c1b1b]'>
-                <div className='border-b pb-3'>
-                    <h3 className='font-semibold'>Summary Cart</h3>
+            <div className='bg-secondary-100 p-3 space-y-4 w-full md:w-[300px] rounded-md text-secondary-900 shadow-md'>
+                <div className='border-b border-orange-950 pb-3'>
+                    <h3 className='font-semibold text-orange-950'>Summary Cart</h3>
                 </div>
                 <div className='flex items-center justify-between'>
                     <span>Items:</span>
@@ -23,8 +23,8 @@ const CartSummary = () => {
                     <span>${totalPrice}</span>
                 </div>
             </div>
-            <div className='bg-[#D1D5DB] p-3 space-y-4 w-full md:w-[300px] rounded-md'>
-                <h3 className='font-semibold text-[#1c1b1b] pb-3'>Payment Method</h3>
+            <div className='bg-secondary-100 p-3 space-y-4 w-full md:w-[300px] rounded-md shadow-md'>
+                <h3 className='font-semibold text-secondary-900 pb-3'>Payment Method</h3>
                 <div className='flex items-center gap-4'>
                     <ButonIcon
                         onClick={() => setMethodSelected('PayPal')}
@@ -40,7 +40,7 @@ const CartSummary = () => {
                 <button
                     disabled={!methodSelected}
                     onClick={() => dispatch(payProductsHandle())}
-                    className='border border-[#B8710E] text-[#B8710E] rounded-md w-full text-center p-1.5'>
+                    className='border border-orange-950/80 disabled:text-orange-950 text-white disabled:bg-secondary-100 bg-orange-950/80 rounded-md w-full text-center p-1.5'>
                     Pay
                 </button>
             </div>

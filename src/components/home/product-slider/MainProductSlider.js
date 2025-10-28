@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 const MainProductSlider = () => {
       const { products } = useSelector((state) => state.products);
   return (
-    <div className="p-4 space-y-4 lg:max-w-screen-md 2xl:max-w-screen-xl mx-auto">
+    <div className="p-4 py-10 space-y-4 lg:max-w-screen-md 2xl:max-w-screen-xl mx-auto">
       <div className="flex items-center justify-between">
             <h6 className="font-semibold text-lg text-secondary-800">Our Products</h6>
             <Link to={"/products"} className='flex items-end gap-2'>

@@ -18,7 +18,7 @@ const ProductsCard = ({ product , className }) => {
                             ? product?.description?.slice(0, 15) + '...'
                             : product?.description
                     }
-                    <Link className='font-semibold text-xs' to={`/products/${product?.id}`} onClick={()=>window.scrollTo(0,0)}> 
+                    <Link className='font-semibold text-xs' to={`/products/${product?.id}`}> 
                         Read More
                     </Link>
                 </p>
