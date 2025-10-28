@@ -51,7 +51,10 @@ const MainProducts = () => {
                       productsList?.length? <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-2'>
                             {productsList?.map(product => <ProductsCard key={product?.id} product={product} />)}
                         </div>
-                        : <p>not found</p>
+                        : <div className='flex flex-col items-center justify-center gap-3 pt-5'>
+                            <span>not found</span>
+                            <img className='w-[300px]' src='/assets/images/product-not-found.png' alt='not-found'/>
+                        </div>
                 }
             </div>
             {
